@@ -6,4 +6,4 @@ Bitmap Transformer Project
 Team Members:
 - Andrew Jacobson
 - Jay Springate
-- Kevin Lewis!
+- Kevin Lewis
