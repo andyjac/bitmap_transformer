@@ -1,0 +1,40 @@
+{
+  "name": "bitmap_transformer",
+  "version": "0.1.0",
+  "description": "A bitmap transformer",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/grunt-cli/bin/grunt test_suite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andyjac/bitmap_transformer.git"
+  },
+  "contributors": [
+    {
+      "name": "Andrew Jacobson"
+    },
+    {
+      "name": "Jay Springate"
+    },
+    {
+      "name": "Kevin Lewis"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andyjac/bitmap_transformer/issues"
+  },
+  "homepage": "https://github.com/andyjac/bitmap_transformer",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-simple-mocha": "^0.4.0"
+  }
+}
