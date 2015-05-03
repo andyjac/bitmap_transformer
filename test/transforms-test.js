@@ -24,11 +24,11 @@ describe('transforms', function() {
   it('should change only the blue values', function() {
     blueTint(colorPalette, header);
 
-    for(var k = 0; k < 1024; k += 4) {
-      if ((bitmap[k + 54] + 250) > 255) {
-      expect(colorPalette[k]).to.eql(255);
+    for(var i = 0; i < 1024; i += 4) {
+      if ((bitmap[i + 54] + 250) > 255) {
+        expect(colorPalette[i]).to.eql(255);
       } else {
-      expect(colorPalette[k]).to.eql((bitmap[k + 54] + 250));
+        expect(colorPalette[i]).to.eql((bitmap[i + 54] + 250));
       }
     }
   });
@@ -36,8 +36,8 @@ describe('transforms', function() {
   it('should have a value between 0 and 255', function() {
     randomize(colorPalette, header);
 
-    for(var k = 0; k < 1024; k ++) {
-      expect(colorPalette[k]).to.be.within(0, 255);
+    for(var i = 0; i < 1024; i ++) {
+      expect(colorPalette[i]).to.be.within(0, 255);
     }
   });
 });
