@@ -1,10 +1,11 @@
 'use strict';
 
 var blueTint = require('../lib/transforms').blueTint;
+var randomize = require('../lib/transforms').randomize;
 var expect = require('chai').expect;
 var fs = require('fs');
 
-describe('blueTint', function() {
+describe('transforms', function() {
   var bitmap;
   var colorPalette = new Buffer(1024);
   var header = {
@@ -20,7 +21,7 @@ describe('blueTint', function() {
     });
   });
 
-  it('should change only every fourth value', function() {
+  it('should change only the blue values', function() {
     blueTint(colorPalette, header);
 
     for(var k = 0; k < 1024; k += 4) {
@@ -29,6 +30,14 @@ describe('blueTint', function() {
       } else {
       expect(colorPalette[k]).to.eql((bitmap[k + 54] + 250));
       }
+    }
+  });
+
+  it('should have a value between 0 and 255', function() {
+    randomize(colorPalette, header);
+
+    for(var k = 0; k < 1024; k ++) {
+      expect(colorPalette[k]).to.be.within(0, 255);
     }
   });
 });
