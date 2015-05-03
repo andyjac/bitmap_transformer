@@ -1,13 +1,25 @@
 'use strict';
 
+var readBitmap = require('../lib/read-bitmap').readBitmap;
 var getHeader = require('../lib/get-header');
 var expect = require('chai').expect;
-var data;
+var fs = require('fs');
 
 describe('getHeader', function () {
-  it('should return the header', function () {
-    data = new Buffer(54);
-    data.write('BM');
-    expect(getHeader(data).head).to.eql('BM');
+  var bitmap;
+
+  before(function(done) {
+    fs.readFile('./bitmap1.bmp', function(err, data) {
+      bitmap = data;
+      done();
+    });
+  });
+
+  it('should return the header', function() {
+    expect(getHeader(bitmap)).to.eql({
+      head: 'BM',
+      paletteStart: 54,
+      paletteSize: 256
+    });
   });
 });
