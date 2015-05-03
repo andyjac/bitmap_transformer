@@ -18,6 +18,7 @@ describe('getHeader', function () {
   it('should return the header', function() {
     expect(getHeader(bitmap)).to.eql({
       head: 'BM',
+      pixelArrayStart: 1078,
       paletteStart: 54,
       paletteSize: 256
     });
