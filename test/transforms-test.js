@@ -46,7 +46,7 @@ describe('transforms', function() {
   });
 
   it('should increase blue values by 0', function() {
-    blueTint(colorPalette, header);
+    blueTint(colorPalette, header, 'hello');
 
     for(var i = 0; i < 1024; i += 4) {
       expect(colorPalette[i]).to.eql((bitmap[i + 54]));
