@@ -8,16 +8,16 @@ Team Members:
 - Jay Springate
 - Kevin Lewis
 
-Usage:
+#Usage:
 
 `node index.js file.bmp transform [amount]`
 
-Possible Transforms:
+#Possible Transforms:
 
-- randomize:
+##randomize:
 
 `node index.js file.bmp randomize`
 
-- blueTint:
+##blueTint:
 
 `node index.js file.bmp blueTint 70`
