@@ -13,7 +13,7 @@ describe('transforms', function() {
     paletteStart: 0
   };
 
-  before(function(done) {
+  beforeEach(function(done) {
     fs.readFile('./bitmap1.bmp', function(err, data) {
       bitmap = data;
       data.copy(colorPalette, 0, 54, 1078);
@@ -21,23 +21,51 @@ describe('transforms', function() {
     });
   });
 
-  it('should change only the blue values', function() {
+  it('should increase blue values by 30', function() {
+    blueTint(colorPalette, header, 30);
+
+    for(var i = 0; i < 1024; i += 4) {
+      if ((bitmap[i + 54] + 30) > 255) {
+        expect(colorPalette[i]).to.eql(255);
+      } else {
+        expect(colorPalette[i]).to.eql((bitmap[i + 54] + 30));
+      }
+    }
+  });
+
+  it('should increase blue values by 30', function() {
+    blueTint(colorPalette, header, -30);
+
+    for(var i = 0; i < 1024; i += 4) {
+      if ((bitmap[i + 54] + 30) > 255) {
+        expect(colorPalette[i]).to.eql(255);
+      } else {
+        expect(colorPalette[i]).to.eql((bitmap[i + 54] + 30));
+      }
+    }
+  });
+
+  it('should increase blue values by 0', function() {
     blueTint(colorPalette, header);
 
-    for(var k = 0; k < 1024; k += 4) {
-      if ((bitmap[k + 54] + 250) > 255) {
-      expect(colorPalette[k]).to.eql(255);
-      } else {
-      expect(colorPalette[k]).to.eql((bitmap[k + 54] + 250));
-      }
+    for(var i = 0; i < 1024; i += 4) {
+      expect(colorPalette[i]).to.eql((bitmap[i + 54]));
+    }
+  });
+
+  it('should increase blue values by 255', function() {
+    blueTint(colorPalette, header, 1000);
+
+    for(var i = 0; i < 1024; i += 4) {
+      expect(colorPalette[i]).to.eql(255);
     }
   });
 
   it('should have a value between 0 and 255', function() {
     randomize(colorPalette, header);
 
-    for(var k = 0; k < 1024; k ++) {
-      expect(colorPalette[k]).to.be.within(0, 255);
+    for(var i = 0; i < 1024; i ++) {
+      expect(colorPalette[i]).to.be.within(0, 255);
     }
   });
 });

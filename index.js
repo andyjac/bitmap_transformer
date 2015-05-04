@@ -1,4 +1,11 @@
-var file = process.argv[2];
-var transform = process.argv[3];
+var validate = require('./lib/validate');
 
-module.exports = require('./lib/main')(file, transform);
+var options = {
+  file: process.argv[2],
+  transform: process.argv[3],
+  amount: process.argv[4]
+};
+
+var validatedOptions = validate(options);
+
+module.exports = require('./lib/main')(validatedOptions);
