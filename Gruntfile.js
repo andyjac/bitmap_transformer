@@ -30,5 +30,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('linter', ['jshint:dev']);
   grunt.registerTask('tester', ['simplemocha:dev']);
-  grunt.registerTask('test_suite', ['linter', 'tester']);
+  grunt.registerTask('default', ['linter', 'tester']);
 };
